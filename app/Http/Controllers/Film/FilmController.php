@@ -10,9 +10,21 @@ class FilmController extends Controller
 {
     public function search(Request $request, Service $searchService)
     {
-        $result = $searchService->execute($request->search);
+        $search = $request->input('search');
+        $result = $searchService->execute($search);
 
         return view('pages.list', ['data' => $result]);
     }
 
+    public function rent(Request $request)
+    {
+        $inputs = json_decode($request->btnRent, true);
+
+        $data = [
+            'title' => $inputs['title'],
+            'img' => $inputs['img'],
+        ];
+
+        return view('pages.rent', ['data' => $data]);
+    }
 }
