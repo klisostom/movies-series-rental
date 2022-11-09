@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('content')
-    <form>
+    <form action="/film/rent" method="POST">
         @csrf
         <ul class="collection">
             @forelse ($data['results'] as $key => $items)
@@ -29,7 +29,7 @@
 
                     <button
                         class="btn waves-effect waves-light"
-                        type="button"
+                        type="submit"
                         id="btnRent{{$key}}"
                         name="btnRent"
                         value="{{json_encode([
