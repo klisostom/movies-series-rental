@@ -13,7 +13,7 @@
         @yield('content')
     </main>
 
-    <footer style="position: absolute;bottom: 0; height: 50px;">
+    <footer style="position: absolute;bottom: 0; width:inherit" class="page-footer">
         @include('includes.footer')
     </footer>
     <!-- Compiled and minified JavaScript -->
