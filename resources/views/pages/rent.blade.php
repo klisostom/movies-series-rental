@@ -7,7 +7,7 @@
                     <img src="{{ $data['img'] }}" alt="movie photo poster" width="auto" height="300">
                 </div>
 
-                <form action="" class="col s12">
+                <form action="#" method="POST" class="col s12">
                     <div class="card-content">
                         <h5 class="card-title">{{ $data['title'] }}</h5>
                         <div class="row">
@@ -22,10 +22,15 @@
 
                             <button
                                 class="btn waves-effect waves-light"
-                                type="submit"
+                                type="button"
                                 id="btnRent"
                                 name="btnRent"
                                 value=""
+                                onclick="save({{Js::from([
+                                    'startRent' => date('d-m-Y h:m:s'),
+                                    'endRent' => Date('d-m-Y h:m:s', strtotime('+2 days')),
+                                    'title' => $data['title'],
+                                ])}})"
                             >
                                 Alugar
                             </button>
@@ -35,4 +40,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function save(args) {
+            const nameClient = document.getElementById("first_name").value;
+            args.nameClient = nameClient;
+
+            let result = JSON.parse(window.localStorage.getItem('rent'));
+            result = [result, args];
+            localStorage.setItem("rent", JSON.stringify(result));
+            window.location.replace("/");
+        }
+    </script>
 @stop
