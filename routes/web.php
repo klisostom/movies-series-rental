@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Film\SearchController;
+use App\Http\Controllers\Film\FilmController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/film/search/', [SearchController::class, 'search']);
+Route::get('/film/search/', [FilmController::class, 'search']);
+Route::post('/film/rent/', [FilmController::class, 'rent']);
