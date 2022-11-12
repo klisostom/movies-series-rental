@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/film/search/', [FilmController::class, 'search']);
 Route::post('/film/rent/', [FilmController::class, 'rent']);
+Route::get('/admin/', function () {
+    return view('pages.admin');
+});
